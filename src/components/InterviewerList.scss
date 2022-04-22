@@ -1,0 +1,25 @@
+@import "styles/variables.scss";
+
+.interviewers {
+  &__header {
+    color: $white;
+    margin-bottom: 0.5rem;
+  }
+
+  &__list {
+    display: flex;
+    flex-flow: row wrap;
+  }
+  
+  &--selected {
+    color: $dark-background;
+    background-color: $white;
+    border-radius: 16px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    padding-left: 2px;
+    padding-right: 1rem;
+    user-select: none;
+  }
+}
