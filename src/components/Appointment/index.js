@@ -27,7 +27,7 @@ const interviewer = {
 };
 
 export default function Appointment(props) {
-
+  // console.log('in appointment', props)
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
@@ -60,8 +60,7 @@ export default function Appointment(props) {
     transition(DELETING)
     props.cancelInterview(props.id)
     .then ( () => {
-      console.log('what props r here in appointment' ,props)
-      transition(EMPTY)
+        transition(EMPTY)
     })
     .catch( () => {
       transition(ERROR_DELETE, true)
@@ -73,7 +72,7 @@ export default function Appointment(props) {
   }
 
 
-  console.log('appointment', props)
+
   
 
 
