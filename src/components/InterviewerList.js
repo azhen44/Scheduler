@@ -4,13 +4,8 @@ import InterviewerListItem from "./InterviewerListItem";
 
 export default function InterviewerList(props) {
 
-  
-
-
-  
-  
   const listItems = props.interviewers.map((x) => {
-    if (x) {
+
       return (
       <InterviewerListItem 
           key={x.id}
@@ -20,13 +15,8 @@ export default function InterviewerList(props) {
           setInterviewer={() => props.onChange(x.id)}    
         />
       )
-    }
+    
   })
-
-
-
-  
-
 
    
 

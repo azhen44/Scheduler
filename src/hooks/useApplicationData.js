@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import spotsHelper from "helpers/spotsHelper";
 
 export default function useApplicationData() {
   const [state, setState] = useState({
@@ -20,13 +21,27 @@ export default function useApplicationData() {
 }, [])
 
   const setDay = day => setState({ ...state, day });
-  const setDays = days => setState({...state, days});
-  const updateSpots = () => {
-    axios.get("http://localhost:8001/api/days")
-    .then((data) => {
-      setState(prev => ({...prev,days:data.data}))
-    })
+
+  //function to update Spots. Uses a helperfunction to create a new days object based on conditions. takes in an add arguemnt to determine if the updateSpots should add a spot (Del), sub a spot(Create).
+  const updateSpots = (id, add) => {
+      if (id > 0 && id <= 5) {
+        const days = spotsHelper(state, state.days[0].id, add)
+        setState(prev => ({...prev, days:days}))     
+    } else if (id > 5 && id <= 10) {
+        const days = spotsHelper(state, state.days[1].id, add)
+        setState(prev => ({...prev, days:days}))
+    } else if (id > 10 && id <= 15) {
+        const days = spotsHelper(state, state.days[2].id, add)
+        setState(prev => ({...prev, days:days}))
+    } else if (id > 15 && id <= 20) {
+        const days = spotsHelper(state, state.days[3].id, add)
+        setState(prev => ({...prev, days:days}))
+    } else if (id > 20 && id <= 25) {
+        const days = spotsHelper(state, state.days[4].id, add)
+        setState(prev => ({...prev, days:days}))
+    }
   }
+
 
   const bookInterview =  (id, interview) => {
     const appointment = {
@@ -45,7 +60,10 @@ export default function useApplicationData() {
       })  
     })
     .then( () => {
-      updateSpots()
+      //only subtract a spot (CREATE) if the appointment slot is null. This will prevent EDIT from subtracting a spot onSave.
+      if (state.appointments[id].interview === null) {
+        updateSpots(id, true)
+      }
     })
     .catch (error => {
       console.log(error)
@@ -55,18 +73,14 @@ export default function useApplicationData() {
 
   
   const cancelInterview = (id) => {
-
     const appointment = {
       ...state.appointments[id],
       interview : null
     }
-
     const appointments = {
       ...state.appointments,
       [id] : appointment
-    }
-  
-    
+    }   
     return axios.delete(`http://localhost:8001/api/appointments/${id}`)
     .then ( (response) => {
         setState({
@@ -75,7 +89,7 @@ export default function useApplicationData() {
       })  
     })
     .then (() => {
-      updateSpots()
+      updateSpots(id, false)
     })
   }
  

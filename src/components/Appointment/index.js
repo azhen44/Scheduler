@@ -20,14 +20,8 @@ const EDIT = "EDIT"
 const ERROR_SAVE = "ERROR_SAVE";
 const ERROR_DELETE = "ERROR_DELETE"
 
-const interviewer = {
-  id: 1,
-  name: "Sylvia Palmer",
-  avatar: "https://i.imgur.com/LpaY82x.png"
-};
 
 export default function Appointment(props) {
-  // console.log('in appointment', props)
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
