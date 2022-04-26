@@ -3,7 +3,6 @@ import React from "react";
 
 function DayList(props) {
   const {days, value, onChange} = props;
-  console.log('selected day: ', value)
 
 
   
