@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";
-
 export default function Form(props) {
-
-
+  const [message, setMessage] = useState("")
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   function nameHandler (event) {
@@ -19,9 +17,23 @@ export default function Form(props) {
     props.onCancel();
   }
   function save() {
-    props.onSave(student, interviewer)
-    props.bookInterview()
+    if (student && interviewer) {
+      setMessage("");
+      props.onSave(student, interviewer)
+      props.bookInterview()
+    } else {
+      if (!student && !interviewer) {
+        setMessage("Student name and Interviewer cannot be blank.")
+      }else if (!student) {
+        setMessage("Student name cannot be blank")
+      }else if (!interviewer) {
+        setMessage("Please select an Interviewer")
+      }
+    }
   }
+
+ 
+
 
 
 
@@ -31,6 +43,7 @@ export default function Form(props) {
       <section className="appointment__card-left">
         <form onSubmit={event => event.preventDefault()} autoComplete="off">
             <input
+              data-testid="student-name-input"
               className="appointment__create-input text--semi-bold"
               name="name"
               type="text"
@@ -38,16 +51,16 @@ export default function Form(props) {
               value={student}
               onChange={(event) => nameHandler(event)}
             />
+            {<strong className="warning">{message}</strong>}
+            <br />
         </form>
         <InterviewerList 
           interviewers={props.interviewers}
           onChange={setInterviewer}
           value={interviewer}
-       
-          
         />
-     
       </section>
+
       <section className="appointment__card-right">
         <section className="appointment__actions">
           <Button danger onClick={cancel}>Cancel</Button>
