@@ -52,8 +52,10 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment
     };
+ 
+    
     return axios.put(`http://localhost:8001/api/appointments/${id}`, appointments[id])
-    .then ( (response) => {
+    .then (() => {
         setState({
         ...state,
         appointments
