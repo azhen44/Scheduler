@@ -20,7 +20,6 @@ export default function Form(props) {
     if (student && interviewer) {
       setMessage("");
       props.onSave(student, interviewer)
-      props.bookInterview()
     } else {
       if (!student && !interviewer) {
         setMessage("Student name and Interviewer cannot be blank.")
