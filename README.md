@@ -22,6 +22,27 @@ A user is shown a status indicator while asynchronous operations are in progress
 When the user presses the close button of the error they are returned to the Form or Show view (skipping Status and Confirm).
 The application makes API requests to load and persist data. We do not lose data after a browser refresh.
 
+![Daily view](https://github.com/azhen44/Scheduler/blob/master/documents/Main%20Screen.png?raw=true)
+The overview of the scheduler. Users can book, edit or remove appointments.
+
+![Book](https://github.com/azhen44/Scheduler/blob/master/documents/Book.png?raw=true)
+![Booked](https://github.com/azhen44/Scheduler/blob/master/documents/afterbooked.png?raw=true)
+Book an appointment.
+
+![edit](https://github.com/azhen44/Scheduler/blob/master/documents/edit.png?raw=true)
+![edit](https://github.com/azhen44/Scheduler/blob/master/documents/afteredit.png?raw=true)
+Edit an appointment.
+
+![remove](https://github.com/azhen44/Scheduler/blob/master/documents/remove.png?raw=true)
+![removed](https://github.com/azhen44/Scheduler/blob/master/documents/afterremove.png?raw=true)
+Delete an appointment.
+
+## Tech Stack
+Front-End: React, Axios, JSX, HTML, SASS, JavaScript
+Back-End: Express, Node.js
+Database: PostgreSQL 
+Testing: Storybook, Webpack Dev Server, Jest, Testing Library and Cypress
+
 ## Setup
 
 Install dependencies with `npm install`.
