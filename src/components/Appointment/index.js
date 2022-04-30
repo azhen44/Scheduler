@@ -26,6 +26,7 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
+
   function onCancel() {
     back();
   }
@@ -39,9 +40,10 @@ export default function Appointment(props) {
     props.bookInterview(props.id, interview)
     .then( () => {
       transition(SHOW)
+    
     })
     .catch( () => {
-      transition(ERROR_SAVE, true)
+      transition(ERROR_SAVE,true)
     })
   }
 
@@ -51,7 +53,7 @@ export default function Appointment(props) {
 
 
   const cancelInterview = () => { 
-    transition(DELETING)
+    transition(DELETING,true)
     props.cancelInterview(props.id)
     .then ( () => {
         transition(EMPTY)

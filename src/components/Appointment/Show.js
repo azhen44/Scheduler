@@ -33,11 +33,3 @@ export default function Show(props) {
   );
 }
 
-
-// <Show
-// student={'Lydia Miller-Jones'}
-// interviewer={interviewer}
-// onEdit={action("onEdit")}
-// onDelete={action("onDelete")}
-
-// />
