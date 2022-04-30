@@ -6,6 +6,7 @@ Data is persisted by the API server using a PostgreSQL database.
 The client application communicates with an API server over HTTP, using the JSON format.
 Jest tests are used through the development of the project.
 Cypress tests are used for End-to-End testing.
+A scheduler api repo was included to store database information.
 
 ## Project Features
 Interviews can be booked between Monday and Friday.
